@@ -1,93 +1,121 @@
 # TWS PERCENT
 
-Widget Android para acompanhar a bateria disponível dos fones Bluetooth diretamente na tela inicial, com a identidade visual da artista **DVORAH**.
+**A branded Android widget for Bluetooth earbuds battery visibility — created as a digital touchpoint for DVORAH.**
 
-> Projeto experimental/MVP criado para uso pessoal e evolução futura.
+TWS PERCENT is a focused Android utility that turns a practical need into a recurring brand interaction: the listener sees the battery status of their earbuds directly on the home screen while staying connected to the visual identity and social channels of **DVORAH**.
 
-## O que o app faz
+> A small utility with a deliberate product role: useful every day, recognizable at a glance, and connected to the artist's ecosystem.
 
-- Exibe a porcentagem de bateria dos fones em um widget inicial.
-- Começa em 1×1 e permite redimensionamento pelo launcher.
-- Atualiza automaticamente em aproximadamente 5 minutos.
-- Permite atualização imediata ao tocar no widget.
-- Usa cores de alerta no percentual:
-  - Verde: 70%–100%
-  - Amarelo: 30%–69%
-  - Vermelho: 0%–29%
-  - Branco: nível indisponível
-- Mostra a abelha da marca como fundo do widget.
-- Possui bordas arredondadas e percentual adaptável ao tamanho do widget.
-- Inclui uma tela interna com a identidade visual da Dvorah, permissão Bluetooth e atalhos para Linktree e Youtube.
+## Product concept
 
-## Demonstração visual
+The app combines three layers:
 
-A tela interna usa uma arte vertical de fundo com estética industrial, alto contraste, textura desgastada e detalhes em ferrugem. Os botões visuais são **Linktree** e **Youtube**.
+1. **Utility** — a glanceable home-screen widget for earbuds battery status.
+2. **Brand experience** — a custom visual system inspired by DVORAH's industrial music identity.
+3. **Conversion path** — direct access to Linktree and Youtube from the app's internal screen.
 
-## Permissões
+This makes the widget more than a battery indicator: it is a lightweight branded touchpoint that can remain present on a listener's device.
 
-No Android 12 ou superior, o app solicita apenas as permissões necessárias para consultar dispositivos Bluetooth próximos:
+## Highlights
+
+- Android home-screen widget with a 1×1 starting size.
+- Horizontal and vertical resizing supported by the launcher.
+- Automatic refresh scheduled for approximately every 5 minutes.
+- Immediate refresh when the widget is tapped.
+- Adaptive percentage typography for different widget sizes.
+- Color-coded battery status:
+  - Green: 70%–100%
+  - Yellow: 30%–69%
+  - Red: 0%–29%
+  - White: battery level unavailable
+- Rounded widget presentation with the bee mark as the visual symbol.
+- Dedicated DVORAH screen with industrial artwork, permission guidance and social links.
+- Visual buttons labeled **Linktree** and **Youtube**.
+
+## Experience flow
+
+```text
+Install app
+    ↓
+Grant nearby-device Bluetooth permission
+    ↓
+Add TWS PERCENT to the home screen
+    ↓
+See battery status at a glance
+    ↓
+Open DVORAH links when desired
+```
+
+## Permissions and privacy
+
+On Android 12 and newer, the app requests only the Bluetooth permissions needed to inspect nearby paired devices:
 
 - `BLUETOOTH_CONNECT`
 - `BLUETOOTH_SCAN`
 
-O app não solicita localização, câmera, microfone, contatos ou acesso a arquivos pessoais.
+The app does **not** request location, camera, microphone, contacts or personal file access. The social buttons open external URLs and do not require account credentials inside TWS PERCENT.
 
-## Como testar
+## Technical notes
 
-### Pelo Android Studio
+The project uses a native Android App Widget provider and `AlarmManager` for periodic refresh. Because Android does not expose one uniform battery API for every earbud manufacturer, the current MVP reads the battery level exposed by the paired Bluetooth device on the handset.
 
-1. Clone ou baixe este repositório.
-2. Abra a pasta no Android Studio.
-3. Aguarde a sincronização do Gradle.
-4. Execute o app em um aparelho Android ou emulador.
-5. Conceda a permissão Bluetooth quando solicitada.
-6. Abra o menu de widgets do Android e adicione **TWS PERCENT** à tela inicial.
+Depending on the model, a device may expose only the case level, only one earbud, or no battery level at all. Android power-saving modes and manufacturer-specific background restrictions can also delay scheduled refreshes.
 
-### Instalando um APK de teste
+The next technical evolution would be a GATT-based Battery Service implementation with manufacturer-specific handling for left earbud, right earbud and charging case.
 
-Os APKs de teste não são versionados no Git. Para gerar um APK localmente:
+## Build and run
+
+### Android Studio
+
+1. Clone or download this repository.
+2. Open the project folder in Android Studio.
+3. Wait for Gradle sync to finish.
+4. Run the app on an Android device or emulator.
+5. Grant Bluetooth access when requested.
+6. Open the Android widget picker and add **TWS PERCENT**.
+
+### Command line
 
 ```bash
 ./gradlew assembleDebug
 ```
 
-O arquivo será criado em:
+The debug APK is generated at:
 
 ```text
 app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## Limitações conhecidas
+APK files are intentionally excluded from Git tracking. Releases should be attached through GitHub Releases rather than committed into the source tree.
 
-O Android não oferece uma API pública uniforme para o nível de bateria de todos os fones. Este MVP lê o nível exposto pelo dispositivo Bluetooth pareado através da API disponível no aparelho. Dependendo do modelo, pode aparecer apenas a bateria do estojo, apenas um lado, ou nenhum nível.
-
-O Android também pode atrasar atualizações em modo de economia de bateria, Doze ou por restrições do fabricante.
-
-## Próximos passos possíveis
-
-- Implementar leitura GATT do Battery Service.
-- Adicionar suporte específico para diferentes fabricantes.
-- Mostrar bateria esquerda, direita e estojo separadamente.
-- Criar uma versão assinada para publicação na Google Play.
-- Adicionar testes automatizados e uma tela de configurações.
-
-## Estrutura principal
+## Repository structure
 
 ```text
-app/src/main/java/              Código da Activity e do widget
-app/src/main/res/layout/        Layouts da aplicação e do widget
-app/src/main/res/drawable/      Ícones e fundos vetoriais
-app/src/main/res/drawable-nodpi/Artes visuais sem escala automática
-app/src/main/res/xml/           Configuração do App Widget
+app/src/main/java/              Activity and widget provider logic
+app/src/main/res/layout/        Widget and internal screen layouts
+app/src/main/res/drawable/      Vector icons and shape backgrounds
+app/src/main/res/drawable-nodpi/Brand artwork and non-scaled visual assets
+app/src/main/res/xml/           App Widget provider configuration
 ```
 
-## Identidade visual
-
-O nome do app é **TWS PERCENT**. A tela interna utiliza a identidade da Dvorah e os links oficiais:
+## Brand links
 
 - Linktree: https://linktr.ee/dvorah.ofc
 - Youtube: https://youtube.com/@luke.fraktur
 
-## Licença
+## Roadmap
 
-Este projeto ainda não possui uma licença de código aberto definida. Antes de publicar como open source, escolha uma licença adequada, como MIT, Apache-2.0 ou GPL-3.0.
+- [ ] GATT Battery Service support.
+- [ ] Separate left, right and case battery levels.
+- [ ] Manufacturer-specific compatibility profiles.
+- [ ] In-app settings for refresh behavior and widget appearance.
+- [ ] Automated tests for battery parsing and widget updates.
+- [ ] Signed release build and store metadata.
+
+## Project status
+
+This is a working personal MVP and portfolio project. The code is intentionally small and focused, while the visual layer demonstrates how a utility can support an artist's identity and audience journey.
+
+## License
+
+No open-source license has been selected yet. Until a license is added, the repository should be treated as **all rights reserved**. Add a license only after deciding how you want others to reuse the code and brand assets.
