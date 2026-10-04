@@ -110,6 +110,14 @@ An installable debug build is available in the public GitHub Release:
 
 This build is intended for device testing and is not a Google Play production release. Android may ask for permission to install an APK downloaded from outside the Play Store. After installation, grant access to nearby Bluetooth devices and add the widget from the Android home-screen widget picker.
 
+### Signed test release
+
+A release-signed test build is also available:
+
+**[Download signed TWS PERCENT 1.2.3 APK](https://github.com/luke-fraktur/tws-percent/releases/tag/v1.2.3-release)**
+
+The signed release is protected by an Android signing key kept outside the repository. The certificate fingerprint and file SHA-256 are published in the release notes so the downloaded artifact can be independently checked. The private signing key is never committed to GitHub.
+
 ## Repository structure
 
 ```text
@@ -137,6 +145,10 @@ app/src/main/res/xml/           App Widget provider configuration
 ## Project status
 
 This is a working personal MVP and portfolio project. The code is intentionally small and focused, while the visual layer demonstrates how a utility can support an artist's identity and audience journey.
+
+## Release security
+
+Debug APKs are provided for development testing. Release APKs are signed separately, and their signing material remains outside source control. A modified APK cannot be presented as a valid update signed by the official release key. This does not prevent third parties from repackaging and redistributing a modified copy under a different signature; users should download builds only from the official GitHub Releases page.
 
 ## License
 
