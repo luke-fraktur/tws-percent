@@ -102,6 +102,14 @@ app/build/outputs/apk/debug/app-debug.apk
 
 APK files are intentionally excluded from Git tracking. Releases should be attached through GitHub Releases rather than committed into the source tree.
 
+## Test APK
+
+An installable debug build is available in the public GitHub Release:
+
+**[Download TWS PERCENT 1.2.3 test APK](https://github.com/luke-fraktur/tws-percent/releases/tag/v1.2.3-test)**
+
+This build is intended for device testing and is not a Google Play production release. Android may ask for permission to install an APK downloaded from outside the Play Store. After installation, grant access to nearby Bluetooth devices and add the widget from the Android home-screen widget picker.
+
 ## Repository structure
 
 ```text
