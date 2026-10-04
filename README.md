@@ -32,6 +32,20 @@ This makes the widget more than a battery indicator: it is a lightweight branded
 - Dedicated DVORAH screen with industrial artwork, permission guidance and social links.
 - Visual buttons labeled **Linktree** and **Youtube**.
 
+## Visual preview
+
+### Widget
+
+The widget is designed for quick recognition on the Android home screen, with the bee mark in the background and a color-coded battery percentage overlaid on top.
+
+![TWS PERCENT widget preview](docs/media/widget-preview.jpg)
+
+### DVORAH app screen
+
+The internal screen turns the utility into a branded music touchpoint, connecting Bluetooth permission, DVORAH's visual identity and direct social access.
+
+![DVORAH internal app screen](docs/media/dvorah-app-screen.jpg)
+
 ## Experience flow
 
 ```text
