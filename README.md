@@ -46,6 +46,14 @@ The internal screen turns the utility into a branded music touchpoint, connectin
 
 ![DVORAH internal app screen](docs/media/dvorah-app-screen.jpg)
 
+### Execution demo
+
+The public signed release also includes a short video showing the widget alternating between battery levels and alert colors:
+
+**[Watch/download the widget execution demo](https://github.com/luke-fraktur/tws-percent/releases/download/v1.2.3-release/tws-percent-widget-demo.mp4)**
+
+For a distinction between executed evidence, automated tests and theoretical compatibility scenarios, see the [validation and execution evidence](docs/validation.md).
+
 ## Experience flow
 
 ```text
